@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block title %}
-	{{parent()}}
+	{{ parent() }}
 	Profil
 {% endblock %}
 {% block body %}
@@ -15,29 +15,26 @@
 								<th scope="col">Nom</th>
 								<th scope="col">Prenom</th>
 								<th scope="col">Email</th>
-								<th scope="col">Date d'user</th>
+								<th scope="col">Date d'inscription</th>
 								<th scope="col">Roles</th>
 							</tr>
 						</thead>
-						<tbody></tbody>
 						<tbody>
-							{% for u in users %}
-								<tr class="{{ cycle(['table-primary', 'table-secondary'], loop.index0) }}">
-									<td>{{ u.nom | capitalize }}</td>
-									<td>{{ u.prenom | capitalize }}</td>
-									<td>{{ u.email | capitalize }}</td>
-									<td>{{ u.dateEnvoi | date("d-m-Y à H:i:s") }}</td>
-									{% if "ROLE_ADMIN" in u.roles %}
-										<td>Administrateur</td>
-									{% else %}
-										<td>Utilisateur</td>
-									{% endif %}
-								</tr>
-							{% endfor %}
+							<tr class="table-primary">
+								<td>{{ app.user.nom | capitalize }}</td>
+								<td>{{ app.user.prenom | capitalize }}</td>
+								<td>{{ app.user.email | lower }}</td>
+								<td>{{ app.user.dateEnvoi | date("d-m-Y à H:i:s") }}</td>
+								{% if "ROLE_ADMIN" in app.user.roles %}
+									<td>Administrateur</td>
+								{% else %}
+									<td>Utilisateur</td>
+								{% endif %}
+							</tr>
 						</tbody>
-					</tbody>
-				</table>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>{% endblock %}
+{% endblock %}
