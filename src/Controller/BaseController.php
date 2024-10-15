@@ -41,7 +41,7 @@ class BaseController extends AbstractController
             'form' => $form->createView()
         ]);
     }
-    #[Route('/categories', name: 'app_categories')]
+    #[Route('/private-categories', name: 'app_categories')]
         public function categories(Request $request, EntityManagerInterface $em): Response
         {
         $categories = new Categories();
@@ -78,7 +78,7 @@ class BaseController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-    #[Route('/modifier/{id}', name: 'app_modifier')]
+    #[Route('/private-modifier/{id}', name: 'app_modifier')]
     public function modifier(Request $request, Categories $categorie, EntityManagerInterface $em): Response
     {
         $form = $this->createForm(ModifierCategorieType::class, $categorie);
@@ -95,7 +95,7 @@ class BaseController extends AbstractController
             'form' => $form->createView()
         ]);
     }
-    #[Route('/supprimer-categorie/{id}', name: 'app_supprimer_categorie')]
+    #[Route('/private-supprimer-categorie/{id}', name: 'app_supprimer_categorie')]
     public function supprimerCategorie(Request $request, Categories $categorie,EntityManagerInterface $em): Response    
     {   
         if($categorie!=null){
