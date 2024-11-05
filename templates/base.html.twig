@@ -4,7 +4,8 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>
-			{% block title %}Share -{% endblock %}             
+			{% block title %}Share -
+			{% endblock %}
 		</title>
 		{% block stylesheets %}
 			<link href="https://bootswatch.com/5/vapor/bootstrap.min.css" rel="stylesheet">
@@ -32,21 +33,36 @@
 							<li class="nav-item">
 								<a class="nav-link" href="{{path('app_categories')}}">Categories</a>
 							</li>
-						
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								Administration
-							</a>
+
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									Administration
+								</a>
+								<ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+									<li>
+										<a class="dropdown-item" href="{{path('app_profil')}}">Profil</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="{{path('app_liste_user')}}">User</a>
+									</li>
+								</ul>
+							</li>
+						{% endif %}
+
+						<div class="nav-item dropdown">
+							<button class="nav-link dropdown-toggle" type="button" id="navbarScrollingDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+								Fichiers
+							</button>
 							<ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
 								<li>
-									<a class="dropdown-item" href="{{path('app_profil')}}">Profil</a>
+									<a class="dropdown-item" href="{{path('app_ajout_fichier')}}">Ajouter fichier</a>
 								</li>
 								<li>
-									<a class="dropdown-item" href="{{path('app_liste_user')}}">User</a>
+									<a class="dropdown-item" href="{{path('app_liste_fichiers')}}">Liste des fichiers</a>
 								</li>
 							</ul>
-						</li>
-						{% endif %}
+						</div>
+
 					</ul>
 					<form class="d-flex">
 						<input class="form-control me-sm-2" type="search" placeholder="Search">
