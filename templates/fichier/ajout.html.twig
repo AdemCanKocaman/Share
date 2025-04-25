@@ -5,7 +5,32 @@
 {% block body %}
     <h1>Ajouter un fichier</h1>
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <button class="btn btn-primary">Ajouter</button>
+    {{ form_row(form.fichier) }}
+    <div class="table-responsive">
+        <table class="table">
+            {% set id = null %}
+            {% for scategorie in scategories %}
+                <tr>
+                    {% if id != scategorie.categorie.id %}
+                        {% set id = scategorie.categorie.id %}
+                        <tr>
+                            <td class="text-primary fwbold">
+                                {{ scategorie.categorie.id }} {{ scategorie.categorie.titre }}
+                            </td>
+                        </tr>
+                    {% endif %}
+                    <td class="text-primary">
+                        - {{ scategorie.numero }} {{ scategorie.titre }}
+                    </td>
+                    <td class="text-primary">
+                        {{ form_widget(form.scategories[scategorie.id]) }}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    {{ form_widget(form) }}
+    <button class="btn btn-primary">Ajouter</button>
     {{ form_end(form) }}
 {% endblock %}

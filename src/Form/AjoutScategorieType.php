@@ -31,11 +31,11 @@ class AjoutScategorieType extends AbstractType
                 'attr' => ['class'=> 'form-control'], 
                 'label_attr' => ['class'=> 'fw-bold'],
                 'choice_label' => function(Categories $categorie) {
-                    return $categorie->getId() . ' - ' . $categorie->getTitre(); // Modifié ici
+                    return $categorie->getId() . ' - ' . $categorie->getTitre();
                 },
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('c')
-                        ->orderBy('c.titre', 'ASC'); // Pas besoin d'un addOrderBy ici
+                        ->orderBy('c.titre', 'ASC');
                 },
             ])
             ->add('envoyer', SubmitType::class, [

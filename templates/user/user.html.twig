@@ -21,7 +21,7 @@
 						<tbody>
 					 	
 							 {% for  user in users %}
-								<tr class="{{ cycle(['table-primary', 'table-secondary'], loop.index0) }}">
+								<tr class="{{ cycle(['table-primary', 'table-secondary'], loop.index0) }}" style="cursor: pointer;">
 									<td>{{ user.nom | capitalize }}</td>
 									<td>{{ user.prenom | capitalize }}</td>
 									<td>{{ user.email | capitalize }}</td>
@@ -38,4 +38,8 @@
 			</div>
 		</div>
 	</div>
+	<script>
+	/* JavaScript */
+
+	</script>
 {% endblock %}
